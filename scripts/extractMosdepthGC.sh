@@ -1,18 +1,6 @@
 #!/bin/bash
 
-
-
 # summary stats for mosdepth bins overlapping a bed file
-
-
-set -e
-
-# keep track of the last executed command
-trap 'last_command=$current_command; current_command=$BASH_COMMAND' DEBUG
-# echo an error message before exiting
-trap 'echo "\"${last_command}\" command filed with exit code $?."' EXIT
-
-
 mosdepthFile=$1
 mosdepthIndexFile=$2
 gcBedFile=$3
