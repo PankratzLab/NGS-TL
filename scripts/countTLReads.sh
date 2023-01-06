@@ -1,13 +1,10 @@
 #!/bin/bash
 
 # Count telomeric content in reads
+
 cramFile=$1
 craiFile=$2
 outputFile=$3
-
-
-cramFile=/Volumes/Beta2/NGS/topmed/MICA/anvil_terra/bams_BDC_LTL/NWD276796.b38.irc.v1.LTL.bam
-outputFile=/Users/Kitty/tmp/test.txt.gz
 
 sample=$(samtools samples $cramFile)
 
