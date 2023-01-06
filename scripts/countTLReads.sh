@@ -2,7 +2,9 @@
 
 
 
-# Extract reads matching telomeric content
+# Count telomeric content in reads
+
+
 set -e
 
 # keep track of the last executed command
@@ -14,26 +16,8 @@ trap 'echo "\"${last_command}\" command filed with exit code $?."' EXIT
 cramFile=$1
 craiFile=$2
 outFileRoot=$3
-kMin=$4
-kMax=$5
 
 
+samtools view -h $cramFile \
+| awk -v OFS='\t'  -v readIndex=10 -v k=$k  '{k1=gsub(/CCCTAA/, "CCCTAA",$readIndex);k2=gsub(/TTAGGG/, "TTAGGG",$readIndex)}{if(k1 >= k2){print k1} else {print k2}}'
 
-ks=($(seq $kmin 1 $kMax))
-
-for k in "${ks[@]}"; do
-    echo "parsing count for $k"
-    
-    outFileFilter="$outFileRoot".k.$k.stats.txt.gz
-    if [ ! -f "$outFileFilter" ]
-    
-    then
-        echo "$outFileFilter"
-        samtools view -h $outFile \
-        | awk -v OFS='\t'  -v readIndex=10 -v k=$k  '{if(gsub(/CCCTAA/, "CCCTAA",$readIndex) >= k || gsub(/TTAGGG/, "TTAGGG",$readIndex) >=k || /@/){print $0}}' \
-        | samtools stats |gzip > "$outFileFilter"
-        
-    else
-        echo "skipping parsing of "$outFileFilter" "
-    fi
-done
