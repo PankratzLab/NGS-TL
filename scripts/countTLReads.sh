@@ -19,5 +19,5 @@ outFileRoot=$3
 
 
 samtools view -h $cramFile \
-| awk -v OFS='\t'  -v readIndex=10 -v k=$k  '{k1=gsub(/CCCTAA/, "CCCTAA",$readIndex);k2=gsub(/TTAGGG/, "TTAGGG",$readIndex)}{if(k1 >= k2){print k1} else {print k2}}'
+| awk -v OFS='\t'  -v readIndex=10 '{k1=gsub(/CCCTAA/, "CCCTAA",$readIndex);k2=gsub(/TTAGGG/, "TTAGGG",$readIndex)}{if(k1 >= k2){print k1} else {print k2}}'
 
