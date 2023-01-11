@@ -1,3 +1,5 @@
+# Compute TL using mosdepth based GC estimate and TL read counts 
+# Trying to stick with base R and no other dependencies, for the time being.
 args = commandArgs(trailingOnly = TRUE)
 tlCountFile = args[[1]]
 gcStatsFile = args[[2]]
