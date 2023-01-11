@@ -13,10 +13,9 @@ kmax = 25
 
 
 tlCounts = read.delim(tlCountFile)
-gcStats = read.delim(gcStatsFile)
+baseStats = read.delim(gcStatsFile, sep = "")
 stats = readLines(samtoolsStatsFile)
-readLength = as.numeric(strsplit(stats[grep(pattern = "maximum length", stats)], split = "\t")[[1]][[3]])
-
+baseStats$READ_LENGTH = as.numeric(strsplit(stats[grep(pattern = "maximum length", stats)], split = "\t")[[1]][[3]])
 
 computeTLInternalCountMD <- function(df, col, normCol) {
   telCounts = df[, col]
