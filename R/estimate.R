@@ -1,16 +1,9 @@
 args = commandArgs(trailingOnly = TRUE)
-# tlCountFile = args[[1]]
-# gcStatsFile = args[[2]]
-# samtoolsStatsFile = args[[3]]
-# kmax = args[[4]]
-# output = args[[5]]
-
-
-tlCountFile = "/Users/Kitty/tmp/LTL_tests/NWD883937.ltl.counts.txt.gz"
-gcStatsFile = "/Users/Kitty/tmp/LTL_tests/NWD883937.gc.stats.txt.gz"
-samtoolsStatsFile = "/Users/Kitty/tmp/LTL_tests/NWD883937.stats.txt.gz"
-kmax = 25
-output="/Users/Kitty/tmp/LTL_tests/NWD883937.estimate.txt.gz"
+tlCountFile = args[[1]]
+gcStatsFile = args[[2]]
+samtoolsStatsFile = args[[3]]
+kmax = args[[4]]
+output = args[[5]]
 
 tlCounts = read.delim(tlCountFile)
 baseStats = read.delim(gcStatsFile, sep = "")
@@ -21,7 +14,7 @@ baseStats$READ_LENGTH = as.numeric(strsplit(stats[grep(pattern = "maximum length
 
 
 computeTLInternalCountMD <- function(tl, baseStats, k) {
-  telCount = sum(tl[which(tl$RepeatK >= k), ]$Count)
+  telCount = sum(tl[which(tl$RepeatK >= k),]$Count)
   gcCount = (baseStats$mosdepth_gc_coverage_mean * 1000 * baseStats$mosdepth_gc_coverage_n) / baseStats$READ_LENGTH
   rat = telCount / gcCount
   scale = 332720800 / 1000 / 46
