@@ -17,16 +17,26 @@ baseStats = read.delim(gcStatsFile, sep = "")
 stats = readLines(samtoolsStatsFile)
 baseStats$READ_LENGTH = as.numeric(strsplit(stats[grep(pattern = "maximum length", stats)], split = "\t")[[1]][[3]])
 
-computeTLInternalCountMD <- function(df, col, normCol) {
-  telCounts = df[, col]
-  gcCounts = (df[, normCol] * 1000 * df$mosdepth_gc_n) / df$READ_LENGTH
-  rat = telCounts / gcCounts
+
+
+computeTLInternalCountMD <- function(tl, baseStats, k) {
+  telCount = sum(tl[which(tl$RepeatK >= k),]$Count)
+  gcCount = (baseStats$mean * 1000 * baseStats$n) / baseStats$READ_LENGTH
+  rat = telCount / gcCount
   scale = 332720800 / 1000 / 46
   tl = rat * scale
   return(tl)
 }
 
-tl$LENGTH_ESTIMATE_MD_median = computeTLInternalCountMD(df = tl,
-                                                        col = "READS_TOTAL",
-                                                        normCol =
-                                                          "mosdepth_gc_median")
+
+ks = c(1:kmax)
+
+results = baseStats
+for (k in ks) {
+  estimate = computeTLInternalCountMD(tl = tlCounts,
+                                      baseStats = baseStats,
+                                      k = k)
+  
+  results[, paste0("LENGTH_ESTIMATE_AT_K_", k)] =   estimate
+}
+print(results)
