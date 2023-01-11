@@ -1,14 +1,9 @@
 args = commandArgs(trailingOnly = TRUE)
-# tlCountFile=args[[1]]
-# gcStatsFile=args[[2]]
-# samtoolsStatsFile=args[[3]]
-# kmax=args[[4]]
-
-tlCountFile = "/Users/Kitty/tmp/LTL_tests/NWD883937.ltl.counts.txt.gz"
-gcStatsFile = "/Users/Kitty/tmp/LTL_tests/NWD883937.gc.stats.txt.gz"
-samtoolsStatsFile = "/Users/Kitty/tmp/LTL_tests/NWD883937.stats.txt.gz"
-kmax = 25
-
+tlCountFile = args[[1]]
+gcStatsFile = args[[2]]
+samtoolsStatsFile = args[[3]]
+kmax = args[[4]]
+output = args[[5]]
 
 tlCounts = read.delim(tlCountFile)
 baseStats = read.delim(gcStatsFile, sep = "")
@@ -31,10 +26,8 @@ computeTLInternalCountMD <- function(tl, baseStats, k) {
   return(resultTmp)
 }
 
-ks = c(1:kmax)
-
 results = baseStats
-for (k in ks) {
+for (k in c(1:kmax)) {
   estimate = computeTLInternalCountMD(tl = tlCounts,
                                       baseStats = baseStats,
                                       k = k)
@@ -42,3 +35,12 @@ for (k in ks) {
   results = cbind(results, estimate)
 }
 print(results)
+gzout = gzfile(output)
+write.table(
+  results,
+  file = gzout,
+  quote = FALSE,
+  sep = "\t",
+  row.names = FALSE,
+  col.names = TRUE
+)
