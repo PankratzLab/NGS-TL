@@ -1,6 +1,14 @@
-args = commandArgs(trailingOnly=TRUE)
-print(args[[1]])
-print(args[[2]])
+args = commandArgs(trailingOnly = TRUE)
+
+# tlCountFile=args[[1]]
+# gcStatsFile=args[[2]]
+k = args[[3]]
+tlCountFile = "/Users/Kitty/tmp/LTL_tests/NWD883937.ltl.counts.txt.gz"
+gcStatsFile = "/Users/Kitty/tmp/LTL_tests/NWD883937.gc.stats.txt.gz"
+k = 9
+
+
+tlCounts = read.delim(tlCountFile)
 
 computeTLInternalCountMD <- function(df, col, normCol) {
   telCounts = df[, col]
