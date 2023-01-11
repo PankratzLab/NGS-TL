@@ -1,9 +1,16 @@
 args = commandArgs(trailingOnly = TRUE)
-tlCountFile = args[[1]]
-gcStatsFile = args[[2]]
-samtoolsStatsFile = args[[3]]
-kmax = args[[4]]
-output = args[[5]]
+# tlCountFile = args[[1]]
+# gcStatsFile = args[[2]]
+# samtoolsStatsFile = args[[3]]
+# kmax = args[[4]]
+# output = args[[5]]
+
+
+tlCountFile = "/Users/Kitty/tmp/LTL_tests/NWD883937.ltl.counts.txt.gz"
+gcStatsFile = "/Users/Kitty/tmp/LTL_tests/NWD883937.gc.stats.txt.gz"
+samtoolsStatsFile = "/Users/Kitty/tmp/LTL_tests/NWD883937.stats.txt.gz"
+kmax = 25
+output="/Users/Kitty/tmp/LTL_tests/NWD883937.estimate.txt.gz"
 
 tlCounts = read.delim(tlCountFile)
 baseStats = read.delim(gcStatsFile, sep = "")
