@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# Count telomeric content in reads
+# Count telomeric content in reads from a bam or cram
 
 bamOrCram=$1
 bamOrCramIndex=$2
