@@ -14,6 +14,7 @@ outputFile=/home/tsaim/lane0212/tmp/LTL_tests/NWD883937.ltl.counts.txt.gz
 
 
 
+
 tlCountFile="/Users/Kitty/tmp/LTL_tests/NWD883937.ltl.counts.txt.gz"
 gcStatsFile="/Users/Kitty/tmp/LTL_tests/NWD883937.gc.stats.txt.gz"
 samtoolsStatsFile="/Users/Kitty/tmp/LTL_tests/NWD883937.stats.txt.gz"
