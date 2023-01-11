@@ -6,18 +6,9 @@ bamOrCram=$1
 bamOrCramIndex=$2
 outputFile=$3
 
-
-
-bamOrCram=/scratch.global/lanej/topMed/LTL/experimental/bams_BDC_LTL_V2/NWD883937.b38.irc.v1.LTL.bam
-outputFile=/home/tsaim/lane0212/tmp/LTL_tests/NWD883937.ltl.counts.txt.gz
-
-
 sample=$(samtools samples $bamOrCram)
 
 awk -v OFS='\t' 'BEGIN {print "Count","RepeatK","Sample","Cram"}' |gzip> $outputFile
-
-
-
 
 samtools view -h $bamOrCram \
 | awk -v OFS='\t'  -v readIndex=10 \
