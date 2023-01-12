@@ -7,4 +7,4 @@ gcStatsFile=$2
 samtoolsStatsFile=$3
 output=$4
 
-Rscript $(dirname $0)/../R/estimate.R $tlCountFile $gcStatsFile $samtoolsStatsFile
+Rscript $(dirname $0)/../R/estimate.R $tlCountFile $gcStatsFile $samtoolsStatsFile $output
