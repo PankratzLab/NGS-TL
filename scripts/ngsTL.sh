@@ -33,11 +33,14 @@ echo "extracting GC regions task"
 
 outTLCram="$rootOut.ltl.cram"
 samtoolsStatsFile="$outCram".stats.txt.gz
+echo "extracting ends task"
 [ -f "$outTLCram" ] || $repoDirectory/extractEnds.sh "$cramFile" "$craiFile" "$outTLCram" "$ref" "$regionsSearch"
 
 tlCountFile="$rootOut.ltl.counts.txt.gz"
+echo "counting tl reads task"
 $repoDirectory/countTLReads.sh $outTLCram $tlCountFile
 
 
 outTLEstimate="$rootOut.ltl.estimate.txt.gz"
+echo "estimating tl task"
 $repoDirectory/estimateTL.sh $tlCountFile $gcStatsFile $samtoolsStatsFile $outTLEstimate
