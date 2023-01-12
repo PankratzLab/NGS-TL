@@ -19,22 +19,22 @@ regionsSearch=$6
 mosdepthFile=$rootOut.regions.bed.gz
 
 echo "Running mosdepth task"
-[ -f "$mosdepthFile" ] || $repoDirectory/mosdepth.sh "$cramFile" "$rootOut" "$ref"
+[ -f "$mosdepthFile" ] || $repoDirectory/scripts/mosdepth.sh "$cramFile" "$rootOut" "$ref"
 
 gcStatsFile="$rootOut.ltl.gc.stats.txt.gz"
 echo "extracting GC regions task"
-[ -f "$gcStatsFile" ] || $repoDirectory/extractMosdepthGC.sh "$mosdepthFile" "$gcBedFile" "$gcStatsFile"
+[ -f "$gcStatsFile" ] || $repoDirectory/scripts/extractMosdepthGC.sh "$mosdepthFile" "$gcBedFile" "$gcStatsFile"
 
 outTLCram="$rootOut.ltl.cram"
 samtoolsStatsFile="$outTLCram".stats.txt.gz
 echo "extracting ends task"
-[ -f "$outTLCram" ] || $repoDirectory/extractEnds.sh "$cramFile" "$craiFile" "$outTLCram" "$ref" "$regionsSearch"
+[ -f "$outTLCram" ] || $repoDirectory/scripts/extractEnds.sh "$cramFile" "$craiFile" "$outTLCram" "$ref" "$regionsSearch"
 
 tlCountFile="$rootOut.ltl.counts.txt.gz"
 echo "counting tl reads task"
-[ -f "$tlCountFile" ] || $repoDirectory/countTLReads.sh $outTLCram $tlCountFile
+[ -f "$tlCountFile" ] || $repoDirectory/scripts/countTLReads.sh $outTLCram $tlCountFile
 
 
 outTLEstimate="$rootOut.ltl.estimate.txt.gz"
 echo "estimating tl task"
-$repoDirectory/estimateTL.sh $tlCountFile $gcStatsFile $samtoolsStatsFile $outTLEstimate
+$repoDirectory/scripts/estimateTL.sh $tlCountFile $gcStatsFile $samtoolsStatsFile $outTLEstimate

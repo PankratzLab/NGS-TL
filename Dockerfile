@@ -76,6 +76,13 @@ RUN wget https://github.com/samtools/samtools/releases/download/1.16.1/samtools-
 
 ENV PATH=${PATH}:/usr/src/samtools-1.13 
 
+WORKDIR /usr/src
+
+
+WORKDIR /app
+RUN git clone https://github.com/PankratzLab/NGS-TL.git
+WORKDIR /app/NGS-TL
+
 
 RUN groupadd -r -g 1000 ubuntu && useradd -r -g ubuntu -u 1000 ubuntu
 USER ubuntu
