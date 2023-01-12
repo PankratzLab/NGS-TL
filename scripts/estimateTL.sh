@@ -4,5 +4,7 @@
 
 tlCountFile=$1
 gcStatsFile=$2
+samtoolsStatsFile=$3
+output=$4
 
-Rscript ../R/estimate.R $tlCountFile $gcStatsFile
+Rscript ../R/estimate.R $tlCountFile $gcStatsFile $samtoolsStatsFile
