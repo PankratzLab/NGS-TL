@@ -68,13 +68,13 @@ ENV PATH=${PATH}:/usr/local/bin/
 WORKDIR /usr/src
 
 RUN wget https://github.com/samtools/samtools/releases/download/1.16.1/samtools-1.16.1.tar.bz2 && \
-	tar jxf samtools-1.13.tar.bz2 && \
-	rm samtools-1.13.tar.bz2 && \
-	cd samtools-1.13 && \
+	tar jxf samtools-1.16.1.tar.bz2 && \
+	rm samtools-1.16.1.tar.bz2 && \
+	cd samtools-1.16.1 && \
 	./configure --prefix $(pwd) && \
 	make
 
-ENV PATH=${PATH}:/usr/src/samtools-1.13 
+ENV PATH=${PATH}:/usr/src/samtools-1.16.1 
 
 WORKDIR /usr/src
 
