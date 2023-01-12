@@ -17,3 +17,4 @@ mosdepthIndexFile=$2
 gcBedFile=$3
 gcBedIndexFile=$4
 outputFile=$5
+

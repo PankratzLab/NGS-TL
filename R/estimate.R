@@ -1,4 +1,4 @@
-# Compute TL using mosdepth based GC estimate and TL read counts 
+# Compute TL using mosdepth based GC estimate and TL read counts
 # Trying to stick with base R and no other dependencies, for the time being.
 args = commandArgs(trailingOnly = TRUE)
 tlCountFile = args[[1]]
@@ -16,7 +16,7 @@ baseStats$READ_LENGTH = as.numeric(strsplit(stats[grep(pattern = "maximum length
 
 
 computeTLInternalCountMD <- function(tl, baseStats, k) {
-  telCount = sum(tl[which(tl$RepeatK >= k),]$Count)
+  telCount = sum(tl[which(tl$RepeatK >= k), ]$Count)
   gcCount = (baseStats$mosdepth_gc_coverage_mean * 1000 * baseStats$mosdepth_gc_coverage_n) / baseStats$READ_LENGTH
   rat = telCount / gcCount
   scale = 332720800 / 1000 / 46
