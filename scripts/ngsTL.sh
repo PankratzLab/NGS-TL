@@ -32,7 +32,7 @@ echo "extracting GC regions task"
 [ -f "$gcStatsFile" ] || $repoDirectory/extractMosdepthGC.sh "$mosdepthFile" "$gcBedFile" "$gcStatsFile"
 
 outTLCram="$rootOut.ltl.cram"
-samtoolsStatsFile="$outCram".stats.txt.gz
+samtoolsStatsFile="$outTLCram".stats.txt.gz
 echo "extracting ends task"
 [ -f "$outTLCram" ] || $repoDirectory/extractEnds.sh "$cramFile" "$craiFile" "$outTLCram" "$ref" "$regionsSearch"
 
