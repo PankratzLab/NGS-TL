@@ -16,11 +16,13 @@ gcBedFile=$5
 
 
 
-$repoDirectory/mosdepth.sh $cramFile $rootOut $ref
+# required ... we want to have the option to either run mosdepth, or to use an existing mosdepth file
 
-# required output 
 mosdepthFile=$rootOut.regions.bed.gz
-mosdepthIndexFile=$rootOut.regions.bed.csi
 
-$repoDirectory/extractMosdepthGC.sh $mosdepthFile $mosdepthIndexFile $gcBedFile $rootOut.ltl.gz.bed.gz
+echo "Running mosdepth task"
+[ -f "$mosdepthFile" ] || $repoDirectory/mosdepth.sh "$cramFile" "$rootOut" "$ref"
+
+echo "extracting GC regions task"
+$repoDirectory/extractMosdepthGC.sh "$mosdepthFile" "$mosdepthIndexFile" "$gcBedFile" "$rootOut.ltl.gz.bed.gz"
 
