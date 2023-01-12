@@ -8,7 +8,6 @@ ref=$4
 regionsSearch=$5
 
 
-
 echo "extracting regions defined by $regionsSearch from $cramFile with index $craiFile to $outCram"
 # If we do not add the perl portion, -X to specify the crai gets angry when reading from amazon or google buckets.
 # Typically samtools is able to extract regions defined by a bed file, but doesn't like to do so from cloud sources (or I had specified something incorrectly)

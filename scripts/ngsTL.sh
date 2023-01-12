@@ -9,15 +9,9 @@ echo $repoDirectory
 cramFile=$1
 craiFile=$2
 rootOut=$3
-
-#resources
 gcBedFile=$4
-
 ref=$5
-# ref*: needs indx
-
 regionsSearch=$6
-
 
 
 # required ... we want to have the option to either run mosdepth, or to use an existing mosdepth file
@@ -38,7 +32,7 @@ echo "extracting ends task"
 
 tlCountFile="$rootOut.ltl.counts.txt.gz"
 echo "counting tl reads task"
-$repoDirectory/countTLReads.sh $outTLCram $tlCountFile
+[ -f "$tlCountFile" ] || $repoDirectory/countTLReads.sh $outTLCram $tlCountFile
 
 
 outTLEstimate="$rootOut.ltl.estimate.txt.gz"
