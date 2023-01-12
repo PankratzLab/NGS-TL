@@ -9,6 +9,8 @@ echo $repoDirectory
 cramFile=$1
 cramIndexFile $2
 rootOut=$3
+
+#resources
 gcBedFile=$4
 
 ref=$5
