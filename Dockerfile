@@ -4,7 +4,7 @@ USER root
 
 RUN apt-get update && apt-get -y upgrade && \
 	apt-get install -y build-essential wget \
-		libncurses5-dev zlib1g-dev libbz2-dev liblzma-dev libcurl3-dev && \
+		libncurses5-dev zlib1g-dev libbz2-dev liblzma-dev libcurl3-dev git && \
 	apt-get clean && apt-get purge && \
 	rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
@@ -67,7 +67,7 @@ ENV PATH=${PATH}:/usr/local/bin/
 
 WORKDIR /usr/src
 
-RUN wget https://github.com/samtools/samtools/releases/download/1.13/samtools-1.13.tar.bz2 && \
+RUN wget https://github.com/samtools/samtools/releases/download/1.16.1/samtools-1.16.1.tar.bz2 && \
 	tar jxf samtools-1.13.tar.bz2 && \
 	rm samtools-1.13.tar.bz2 && \
 	cd samtools-1.13 && \
