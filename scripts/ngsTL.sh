@@ -7,7 +7,7 @@ repoDirectory=$(dirname $0)
 echo $repoDirectory
 
 cramFile=$1
-craiFile $2
+craiFile=$2
 rootOut=$3
 
 #resources
