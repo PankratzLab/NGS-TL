@@ -28,7 +28,7 @@ computeTLInternalCountMD <- function(tl, baseStats, k) {
 }
 
 results = baseStats
-kmax = max(tl$RepeatK)
+kmax = max(tlCounts$RepeatK)
 for (k in c(1:kmax)) {
   estimate = computeTLInternalCountMD(tl = tlCounts,
                                       baseStats = baseStats,
