@@ -15,7 +15,7 @@ baseStats$READ_LENGTH = as.numeric(strsplit(stats[grep(pattern = "maximum length
 
 
 computeTLInternalCountMD <- function(tl, baseStats, k) {
-  telCount = sum(tl[which(tl$RepeatK >= k),]$Count)
+  telCount = sum(tl[which(tl$RepeatK >= k), ]$Count)
   gcCount = (baseStats$mosdepth_gc_coverage_mean * 1000 * baseStats$mosdepth_gc_coverage_n) / baseStats$READ_LENGTH
   rat = telCount / gcCount
   scale = 332720800 / 1000 / 46
@@ -28,7 +28,7 @@ computeTLInternalCountMD <- function(tl, baseStats, k) {
 }
 
 results = baseStats
-kmax = max(tlCounts$RepeatK)
+kmax = max(tlCounts$RepeatKlt)
 for (k in c(1:kmax)) {
   estimate = computeTLInternalCountMD(tl = tlCounts,
                                       baseStats = baseStats,
