@@ -7,7 +7,7 @@ repoDirectory=$(dirname $0)
 echo $repoDirectory
 
 cramFile=$1
-cramIndexFile $2
+craiFile $2
 rootOut=$3
 
 #resources
@@ -32,4 +32,4 @@ echo "extracting GC regions task"
 [ -f "$gcStatsFile" ] || $repoDirectory/extractMosdepthGC.sh "$mosdepthFile" "$gcBedFile" "$gcStatsFile"
 
 outTLCram="$rootOut.ltl.cram"
-$repoDirectory/extractEnds.sh "$cramFile" "$cramIndexFile" "$outTLCram" "$ref" "$regionsSearch"
+$repoDirectory/extractEnds.sh "$cramFile" "$craiFile" "$outTLCram" "$ref" "$regionsSearch"
