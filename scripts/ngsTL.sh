@@ -27,9 +27,12 @@ mosdepthFile=$rootOut.regions.bed.gz
 echo "Running mosdepth task"
 [ -f "$mosdepthFile" ] || $repoDirectory/mosdepth.sh "$cramFile" "$rootOut" "$ref"
 
-gcStatsFile="$rootOut.ltl.gc.bed.gz"
+gcStatsFile="$rootOut.ltl.gc.stats.txt.gz"
 echo "extracting GC regions task"
 [ -f "$gcStatsFile" ] || $repoDirectory/extractMosdepthGC.sh "$mosdepthFile" "$gcBedFile" "$gcStatsFile"
 
 outTLCram="$rootOut.ltl.cram"
-$repoDirectory/extractEnds.sh "$cramFile" "$craiFile" "$outTLCram" "$ref" "$regionsSearch"
+[ -f "$outTLCram" ] || $repoDirectory/extractEnds.sh "$cramFile" "$craiFile" "$outTLCram" "$ref" "$regionsSearch"
+
+outTLCounts="$rootOut.ltl.counts.txt.gz"
+$repoDirectory/countTLReads.sh $outTLCram $outTLCounts

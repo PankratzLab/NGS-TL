@@ -3,8 +3,7 @@
 # Count telomeric content in non secondary, non supplemental alignments from a bam or cram
 
 bamOrCram=$1
-bamOrCramIndex=$2
-outputFile=$3
+outputFile=$2
 
 sample=$(samtools samples $bamOrCram)
 
