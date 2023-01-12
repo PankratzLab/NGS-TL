@@ -9,11 +9,12 @@ echo $repoDirectory
 cramFile=$1
 # cramIndexFile: required
 rootOut=$2
-ref=$3
-# ref*: needs indx
-gcBedFile=$4
+gcBedFile=$3
 
-regionsSearch=$4
+ref=$4
+# ref*: needs indx
+
+regionsSearch=$5
 
 
 
