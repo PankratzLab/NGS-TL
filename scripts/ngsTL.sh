@@ -7,14 +7,14 @@ repoDirectory=$(dirname $0)
 echo $repoDirectory
 
 cramFile=$1
-# cramIndexFile: required
-rootOut=$2
-gcBedFile=$3
+cramIndexFile $2
+rootOut=$3
+gcBedFile=$4
 
-ref=$4
+ref=$5
 # ref*: needs indx
 
-regionsSearch=$5
+regionsSearch=$6
 
 
 
@@ -27,5 +27,7 @@ echo "Running mosdepth task"
 
 gcStatsFile="$rootOut.ltl.gc.bed.gz"
 echo "extracting GC regions task"
-$repoDirectory/extractMosdepthGC.sh "$mosdepthFile" "$gcBedFile" "$gcStatsFile"
+[ -f "$gcStatsFile" ] || $repoDirectory/extractMosdepthGC.sh "$mosdepthFile" "$gcBedFile" "$gcStatsFile"
 
+outTLCram="$rootOut.ltl.cram"
+$repoDirectory/extractEnds.sh "$cramFile" "$cramIndexFile" "$outTLCram" "$ref" "$regionsSearch"
