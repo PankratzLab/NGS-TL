@@ -11,8 +11,9 @@ cramFile=$1
 rootOut=$2
 ref=$3
 # ref*: needs indx
+gcBedFile=$4
+
 regionsSearch=$4
-gcBedFile=$5
 
 
 
