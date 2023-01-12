@@ -24,5 +24,5 @@ echo "Running mosdepth task"
 [ -f "$mosdepthFile" ] || $repoDirectory/mosdepth.sh "$cramFile" "$rootOut" "$ref"
 
 echo "extracting GC regions task"
-$repoDirectory/extractMosdepthGC.sh "$mosdepthFile" "$mosdepthIndexFile" "$gcBedFile" "$rootOut.ltl.gz.bed.gz"
+$repoDirectory/extractMosdepthGC.sh "$mosdepthFile" "$gcBedFile" "$rootOut.ltl.gz.bed.gz"
 
