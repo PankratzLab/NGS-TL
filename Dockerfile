@@ -8,14 +8,21 @@ RUN apt-get update && apt-get -y upgrade && \
 	apt-get clean && apt-get purge && \
 	rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
+# install mosdepth
 RUN wget "https://github.com/brentp/mosdepth/releases/download/v0.3.2/mosdepth"
 RUN cp ./mosdepth /usr/local/bin/
 RUN chmod a+x /usr/local/bin/mosdepth
+
+# install bedtools
+RUN wget https://github.com/arq5x/bedtools2/releases/download/v2.30.0/bedtools.static.binary
+RUN cp ./bedtools.static.binary /usr/local/bin/bedtools
+RUN chmod a+x /usr/local/bin/bedtools
 
 VOLUME /tmp
 
 WORKDIR /tmp
 
+# install telseq prereqs
 RUN apt-get update && \
     apt-get install -y \
         automake \
