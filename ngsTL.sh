@@ -12,26 +12,20 @@ rootOut=$3
 gcBedFile=$4
 ref=$5
 regionsSearch=$6
-# mosdepthFile=$7
+mosdepthFile=$7
 
 
 
 # required ... we want to have the option to either run mosdepth, or to use an existing mosdepth file
-# if [ -z ${mosdepthFile+x} ]
-# then
-#     mosdepthFile=$rootOut.regions.bed.gz
-
-#     echo "Running mosdepth task"
-#     [ -f "$mosdepthFile" ] || $repoDirectory/scripts/mosdepth.sh "$cramFile" "$rootOut" "$ref"
-
-# else echo "mosdepthFile is set to '$mosdepthFile'"
-# fi
-
-mosdepthFile=$rootOut.regions.bed.gz
-
-echo "Running mosdepth task"
-[ -f "$mosdepthFile" ] || $repoDirectory/scripts/mosdepth.sh "$cramFile" "$rootOut" "$ref"
-
+if [ -z ${mosdepthFile+x} ]
+then
+    mosdepthFile=$rootOut.regions.bed.gz
+    
+    echo "Running mosdepth task"
+    [ -f "$mosdepthFile" ] || $repoDirectory/scripts/mosdepth.sh "$cramFile" "$rootOut" "$ref"
+    
+else echo "mosdepthFile is set to '$mosdepthFile'"
+fi
 
 
 gcStatsFile="$rootOut.ltl.gc.stats.txt.gz"
