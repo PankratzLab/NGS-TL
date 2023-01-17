@@ -17,7 +17,7 @@ mosdepthFile=$7
 
 
 # required ... we want to have the option to either run mosdepth, or to use an existing mosdepth file
-if [ -z ${mosdepthFile+x} ]
+if [ -z "$mosdepthFile" ]
 then
     mosdepthFile=$rootOut.regions.bed.gz
     
