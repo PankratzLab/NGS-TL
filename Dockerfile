@@ -84,7 +84,7 @@ WORKDIR /usr/src
 
 
 WORKDIR /app
-# RUN git clone https://github.com/PankratzLab/NGS-TL.git
+RUN git clone https://github.com/PankratzLab/NGS-TL.git
 WORKDIR /app/NGS-TL
 
 
