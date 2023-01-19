@@ -32,6 +32,7 @@ mosdepthFile=$7
 # We want to have the option to either run mosdepth, or to use an existing mosdepth file
 if [ -z "$mosdepthFile" ]
 then
+    # output file of interest
     mosdepthFile=$rootOut.regions.bed.gz
     
     echo "Running mosdepth task"
@@ -40,21 +41,23 @@ then
 else echo "mosdepthFile is set to '$mosdepthFile'"
 fi
 
-
+# output file of interest
 gcStatsFile="$rootOut.ltl.gc.stats.txt.gz"
 echo "extracting GC regions task"
 [ -f "$gcStatsFile" ] || $repoDirectory/scripts/extractMosdepthGC.sh "$mosdepthFile" "$gcBedFile" "$gcStatsFile"
 
+# output file of interest
 outTLCram="$rootOut.ltl.cram"
 samtoolsStatsFile="$outTLCram".stats.txt.gz
 echo "extracting ends task"
 [ -f "$outTLCram" ] || $repoDirectory/scripts/extractEnds.sh "$cramFile" "$craiFile" "$outTLCram" "$ref" "$regionsSearch"
 
+# output file of interest
 tlCountFile="$rootOut.ltl.counts.txt.gz"
 echo "counting tl reads task"
 [ -f "$tlCountFile" ] || $repoDirectory/scripts/countTLReads.sh $outTLCram $tlCountFile
 
-
+# output file of interest
 outTLEstimate="$rootOut.ltl.estimate.txt.gz"
 echo "estimating tl task"
 $repoDirectory/scripts/estimateTL.sh $tlCountFile $gcStatsFile $samtoolsStatsFile $outTLEstimate
