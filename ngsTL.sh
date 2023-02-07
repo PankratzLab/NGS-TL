@@ -2,7 +2,7 @@
 
 # Estimate TL from a bam or cram file
 
-options=$(getopt -l "cramFile:,craiFile:,rootOutput:referenceGenome:" -o "" -a -- "$@")
+options=$(getopt -l "cramFile:,craiFile:,rootOutput:,referenceGenome:,gcBedFile:,regionsSearch:,mosdepthFile:" -o "" -a -- "$@")
 
 eval set -- "$options"
 
@@ -61,7 +61,6 @@ done
 # Parse location of this script so we can reference the helper scripts
 repoDirectory=$(dirname $0)
 echo "repo directory: $repoDirectory"
-
 echo "cram: $cramFile"
 echo "crai: $craiFile"
 echo "root output: $rootOutput"
