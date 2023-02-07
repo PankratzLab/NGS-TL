@@ -2,7 +2,7 @@
 
 # Estimate TL from a bam or cram file
 
-VALID_ARGS=$(getopt -o abg:d: --long alpha,beta,gamma:,delta: -- "$@")
+VALID_ARGS=$(getopt -o '' --long cramFile,craiFile,gamma:,delta: -- "$@")
 if [[ $? -ne 0 ]]; then
     exit 1;
 fi
@@ -10,19 +10,11 @@ fi
 eval set -- "$VALID_ARGS"
 while [ : ]; do
     case "$1" in
-        -a | --alpha)
-            echo "Processing 'alpha' option"
-            shift
-        ;;
-        -b | --beta)
-            echo "Processing 'beta' option"
-            shift
-        ;;
-        -g | --gamma)
+        --cramFile)
             echo "Processing 'gamma' option. Input argument is '$2'"
             shift 2
         ;;
-        -d | --delta)
+        --craiFile)
             echo "Processing 'delta' option. Input argument is '$2'"
             shift 2
         ;;
