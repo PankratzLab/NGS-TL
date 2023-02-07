@@ -2,6 +2,35 @@
 
 # Estimate TL from a bam or cram file
 
+VALID_ARGS=$(getopt -o abg:d: --long alpha,beta,gamma:,delta: -- "$@")
+if [[ $? -ne 0 ]]; then
+    exit 1;
+fi
+
+eval set -- "$VALID_ARGS"
+while [ : ]; do
+    case "$1" in
+        -a | --alpha)
+            echo "Processing 'alpha' option"
+            shift
+        ;;
+        -b | --beta)
+            echo "Processing 'beta' option"
+            shift
+        ;;
+        -g | --gamma)
+            echo "Processing 'gamma' option. Input argument is '$2'"
+            shift 2
+        ;;
+        -d | --delta)
+            echo "Processing 'delta' option. Input argument is '$2'"
+            shift 2
+        ;;
+        --) shift;
+            break
+        ;;
+    esac
+done
 
 # Parse location of this script so we can reference the helper scripts
 echo $0
@@ -14,7 +43,7 @@ cramFile=$1
 craiFile=$2
 # The root output path (e.g. rootOut=/path/to/example should result in the creation of /path/to/example.ltl.estimate.txt.gz)
 rootOut=$3
-# Stores 1kb bins that have gc content similar to telomeric repeats. 
+# Stores 1kb bins that have gc content similar to telomeric repeats.
 # Unless you want to change it, this can be set to https://github.com/PankratzLab/NGS-TL/blob/main/resources/GRCh38_full_analysis_set_plus_decoy_hla.1kb.LTL.GC.filtered.bed.gz
 gcBedFile=$4
 # The reference genome used to align the cram or bam (e.g. GRCh38_full_analysis_set_plus_decoy_hla.fa)
