@@ -2,16 +2,8 @@
 
 # Estimate TL from a bam or cram file
 
-# $@ is all command line parameters passed to the script.
-# -o is for short options like -v
-# -l is for long options with double dash like --version
-# the comma separates different long options
-# -a is for long options with single dash like -version
-options=$(getopt -l "cramFile:,craiFile:" -o "" -a -- "$@")
+options=$(getopt -l "cramFile:,craiFile:,rootOut:" -o "" -a -- "$@")
 
-# set --:
-# If no arguments follow this option, then the positional parameters are unset. Otherwise, the positional parameters
-# are set to the arguments, even if some of them begin with a ‘-’.
 eval set -- "$options"
 
 while true
@@ -29,8 +21,12 @@ do
         # The cram (or bam) file's index
         --craiFile)
             shift
-            echo "crai $1"
             export craiFile="$1"
+        ;;
+        # The root output path (e.g. rootOut=/path/to/example should result in the creation of /path/to/example.ltl.estimate.txt.gz)
+        --rootOut)
+            shift
+            export rootOut="$1"
         ;;
         --)
             shift
@@ -40,18 +36,19 @@ do
 done
 
 # Parse location of this script so we can reference the helper scripts
-echo $0
 repoDirectory=$(dirname $0)
-echo $repoDirectory
+echo "repo directory: $repoDirectory"
 
-echo "cram $cramFile"
+echo "cram: $cramFile"
+echo "crai: $craiFile"
+echo "root output: $rootOut"
 
 exit 0
 
-# cramFile=$1
-craiFile=$2
-# The root output path (e.g. rootOut=/path/to/example should result in the creation of /path/to/example.ltl.estimate.txt.gz)
-rootOut=$3
+# # cramFile=$1
+# craiFile=$2
+# rootOut=$3
+
 # Stores 1kb bins that have gc content similar to telomeric repeats.
 # Unless you want to change it, this can be set to https://github.com/PankratzLab/NGS-TL/blob/main/resources/GRCh38_full_analysis_set_plus_decoy_hla.1kb.LTL.GC.filtered.bed.gz
 gcBedFile=$4
