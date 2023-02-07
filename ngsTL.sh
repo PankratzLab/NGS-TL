@@ -21,14 +21,15 @@ do
             showHelp
             exit 0
         ;;
+        # The cram (or bam) file to process
         --cramFile)
             shift
-            echo "$1"
             export cramFile="$1"
         ;;
-        -c|--craiFile)
+        # The cram (or bam) file's index
+        --craiFile)
             shift
-            echo "$1"
+            echo "crai $1"
             export craiFile="$1"
         ;;
         --)
@@ -38,16 +39,16 @@ do
     shift
 done
 
-exit 0
 # Parse location of this script so we can reference the helper scripts
 echo $0
-echo $cramFile
 repoDirectory=$(dirname $0)
 echo $repoDirectory
 
-# The cram (or bam) file to process
-cramFile=$1
-# The cram (or bam) file's index
+echo "cram $cramFile"
+
+exit 0
+
+# cramFile=$1
 craiFile=$2
 # The root output path (e.g. rootOut=/path/to/example should result in the creation of /path/to/example.ltl.estimate.txt.gz)
 rootOut=$3
