@@ -2,30 +2,46 @@
 
 # Estimate TL from a bam or cram file
 
-VALID_ARGS=$(getopt -o '' --long cramFile,craiFile,gamma:,delta: -- "$@")
-if [[ $? -ne 0 ]]; then
-    exit 1;
-fi
+# $@ is all command line parameters passed to the script.
+# -o is for short options like -v
+# -l is for long options with double dash like --version
+# the comma separates different long options
+# -a is for long options with single dash like -version
+options=$(getopt -l "cramFile:,craiFile:" -o "" -a -- "$@")
 
-eval set -- "$VALID_ARGS"
-while [ : ]; do
+# set --:
+# If no arguments follow this option, then the positional parameters are unset. Otherwise, the positional parameters
+# are set to the arguments, even if some of them begin with a ‘-’.
+eval set -- "$options"
+
+while true
+do
     case "$1" in
+        -h|--help)
+            showHelp
+            exit 0
+        ;;
         --cramFile)
-            echo "Processing 'gamma' option. Input argument is '$2'"
-            shift 2
+            shift
+            echo "$1"
+            export cramFile="$1"
         ;;
-        --craiFile)
-            echo "Processing 'delta' option. Input argument is '$2'"
-            shift 2
+        -c|--craiFile)
+            shift
+            echo "$1"
+            export craiFile="$1"
         ;;
-        --) shift;
-            break
-        ;;
+        --)
+            shift
+        break;;
     esac
+    shift
 done
 
+exit 0
 # Parse location of this script so we can reference the helper scripts
 echo $0
+echo $cramFile
 repoDirectory=$(dirname $0)
 echo $repoDirectory
 
