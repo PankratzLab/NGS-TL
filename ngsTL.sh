@@ -81,11 +81,6 @@ echo "regionsSearch: $regionsSearch"
 echo "mosdepthFile: $mosdepthFile"
 
 
-
-exit 0
-
-
-
 # We want to have the option to either run mosdepth, or to use an existing mosdepth file
 if [ -z "$mosdepthFile" ]
 then
