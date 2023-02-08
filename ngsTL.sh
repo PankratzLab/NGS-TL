@@ -9,6 +9,12 @@ trap 'last_command=$current_command; current_command=$BASH_COMMAND' DEBUG
 trap 'echo "\"${last_command}\" command filed with exit code $?."' EXIT
 
 
+repoDirectory=$(dirname $0)
+echo "repo directory: $repoDirectory"
+gcBedFile=$repoDirectory/resources/GRCh38_full_analysis_set_plus_decoy_hla.1kb.LTL.GC.filtered.bed.gz
+regionsSearch=$repoDirectory/resources/25kb.bins.bed
+
+
 # Estimate TL from a bam or cram file
 
 options=$(getopt -l "cramFile:,craiFile:,rootOutput:,referenceGenome:,gcBedFile:,regionsSearch:,mosdepthFile:" -o "" -a -- "$@")
@@ -68,8 +74,7 @@ do
 done
 
 # Parse location of this script so we can reference the helper scripts
-repoDirectory=$(dirname $0)
-echo "repo directory: $repoDirectory"
+
 echo "cram: $cramFile"
 echo "crai: $craiFile"
 echo "root output: $rootOutput"
