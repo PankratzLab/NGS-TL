@@ -1,5 +1,7 @@
 #!/bin/bash
 
+# Estimate LTL using a 1000 genomes cram
+
 # causes a script to immediately exit when it encounters an error.
 set -e
 
