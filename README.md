@@ -37,3 +37,8 @@ singularity run \
 ```
 
 A parameterized example with all expected output can be found in the [example directory](https://github.com/PankratzLab/NGS-TL/tree/main/example) of this repo. Output was generated using [example.sh](https://github.com/PankratzLab/NGS-TL/tree/main/example/example.sh)
+
+
+## Output
+
+The primary output of interest is a file named "$rootOutput".ltl.estimate.txt.gz (e.g. https://github.com/PankratzLab/NGS-TL/blob/main/example/NA12878.ltl.estimate.txt.gz). 
