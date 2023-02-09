@@ -121,3 +121,8 @@ echo "counting tl reads task"
 outTLEstimate="$rootOutput.ltl.estimate.txt.gz"
 echo "estimating tl task"
 $repoDirectory/scripts/estimateTL.sh $tlCountFile $gcStatsFile $samtoolsStatsFile $outTLEstimate
+
+
+
+# gzip any txt files to save space (e.g those from mosdepth)
+gzip "$rootOutput"*.txt
