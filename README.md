@@ -2,9 +2,11 @@
 Estimate telomere length (TL) from whole genome sequencing
 
 
-Primary entry point is to run [ngsTL.sh](https://github.com/PankratzLab/NGS-TL/blob/main/ngsTL.sh)
 
 ## Example usage (via singularity)
+
+Primary entry point is to run [ngsTL.sh](https://github.com/PankratzLab/NGS-TL/blob/main/ngsTL.sh) that is inside the docker image (https://quay.io/repository/jlanej/ngs-tl?tab=info) 
+
 
 ```
 
