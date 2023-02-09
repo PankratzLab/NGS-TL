@@ -8,7 +8,7 @@ trap 'last_command=$current_command; current_command=$BASH_COMMAND' DEBUG
 # echo an error message before exiting
 trap 'echo "\"${last_command}\" command filed with exit code $?."' EXIT
 
-
+# Parse location of this script so we can reference the helper scripts
 repoDirectory=$(dirname $0)
 echo "repo directory: $repoDirectory"
 gcBedFile=$repoDirectory/resources/GRCh38_full_analysis_set_plus_decoy_hla.1kb.LTL.GC.filtered.bed.gz
@@ -73,8 +73,9 @@ do
     shift
 done
 
-# Parse location of this script so we can reference the helper scripts
 
+
+# Report params
 echo "cram: $cramFile"
 echo "crai: $craiFile"
 echo "root output: $rootOutput"
