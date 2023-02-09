@@ -71,3 +71,8 @@ Brief data dictionary of the results:
 | …                           | …                                                                                                                      |   |
 | TL_READS_AT_K_N             | Number of reads containing at least N telomeric repeats                                                                 |   |
 | LENGTH_ESTIMATE_AT_K_N      | TL estimate using a repeat "K" threshold of N                                                                          |   |
+
+
+## Which LENGTH_ESTIMATE_AT_K to use?
+
+TODO ... but the individual length estimates can be evaluated against a PRS and the estimate with the strongest association could be used as aproxy.
