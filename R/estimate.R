@@ -13,7 +13,7 @@ stats = readLines(samtoolsStatsFile)
 baseStats$READ_LENGTH = as.numeric(strsplit(stats[grep(pattern = "maximum length", stats)], split = "\t")[[1]][[3]])
 
 
-
+# compute TL in a somewhat similar fashion as TelSeq (https://github.com/zd1/telseq/blob/48c2ebcf2694a8396d96b3502a5188b9075ddba6/src/Telseq/telseq.cpp#L468-L489), but using proxies for gc content normalization (from mosdepth), and only counting telomeric reads ~25kb +/- of chromsome ends.
 computeTLInternalCountMD <- function(tl, baseStats, k) {
   telCount = sum(tl[which(tl$RepeatK >= k),]$Count)
   gcCount = (baseStats$mosdepth_gc_coverage_mean * 1000 * baseStats$mosdepth_gc_coverage_n) / baseStats$READ_LENGTH
