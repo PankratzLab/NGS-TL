@@ -35,3 +35,5 @@ singularity run \
 # If mosdepth file is not provided, mosdepth will be run to produce $rootOutput.regions.bed.gz
 #--mosdepthFile $pathToMosdepthFil
 ```
+
+A parameterized example with all expected output can be found in the [example directory](https://github.com/PankratzLab/NGS-TL/tree/main/example) of this repo. Output was generated using [example.sh](https://github.com/PankratzLab/NGS-TL/tree/main/example/example.sh)
