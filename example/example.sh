@@ -30,7 +30,7 @@ cramFile="ftp://ftp.1000genomes.ebi.ac.uk/vol1/ftp/data_collections/1000_genomes
 craiFile="ftp://ftp.1000genomes.ebi.ac.uk/vol1/ftp/data_collections/1000_genomes_project/data/CEU/NA12878/alignment/NA12878.alt_bwamem_GRCh38DH.20150718.CEU.low_coverage.cram.crai"
 
 
-rootOut="$processDir"/NA12878
+rootOutput="$processDir"/NA12878
 
 
 # INSTALL singularity 
@@ -41,7 +41,7 @@ singularity run \
 /app/NGS-TL/ngsTL.sh \
 --cramFile "$cramFile" \
 --craiFile "$craiFile" \
---rootOutput "$rootOut" \
+--rootOutput "$rootOutput" \
 --referenceGenome "$referenceGenome" \
 --gcBedFile "$gcBedFile" \
 --regionsSearch "$regionsSearch"

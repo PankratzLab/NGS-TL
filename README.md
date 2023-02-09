@@ -19,7 +19,7 @@ singularity run \
 # The cram (or bam) file's index
 --craiFile "$craiFile" \
 # The root output path (e.g. rootOutput=/path/to/example should result in the creation of /path/to/example.ltl.estimate.txt.gz)
---rootOutput "$rootOut" \
+--rootOutput "$rootOutput" \
 # The reference genome used to align the cram or bam (e.g. GRCh38_full_analysis_set_plus_decoy_hla.fa)
 --referenceGenome "$referenceGenome" \
 # Stores 1kb bins that have gc content similar to telomeric repeats.

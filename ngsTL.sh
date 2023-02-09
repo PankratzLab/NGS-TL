@@ -11,6 +11,8 @@ trap 'echo "\"${last_command}\" command filed with exit code $?."' EXIT
 # Parse location of this script so we can reference the helper scripts
 repoDirectory=$(dirname $0)
 echo "repo directory: $repoDirectory"
+
+# default to the repo resources for gc bend and regions to search
 gcBedFile=$repoDirectory/resources/GRCh38_full_analysis_set_plus_decoy_hla.1kb.LTL.GC.filtered.bed.gz
 regionsSearch=$repoDirectory/resources/25kb.bins.bed
 
