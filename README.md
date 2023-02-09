@@ -66,7 +66,7 @@ Brief data dictionary of the results:
 | READ_LENGTH                 | Empircially determined read length of the bam (max read length reported by samtools stats)                             |   |
 | TL_READS_AT_K_1             | Number of reads containing at least 1 telomeric repeat                                                                  |   |
 | LENGTH_ESTIMATE_AT_K_1      | TL estimate using a repeat "K" threshold of 1                                                                          |   |
-| TL_READS_AT_K_2             | Number of reads containing at least 1 telomeric repeats                                                                 |   |
+| TL_READS_AT_K_2             | Number of reads containing at least 2 telomeric repeats                                                                 |   |
 | LENGTH_ESTIMATE_AT_K_2      | TL estimate using a repeat "K" threshold of 2                                                                          |   |
 | …                           | …                                                                                                                      |   |
 | TL_READS_AT_K_N             | Number of reads containing at least N telomeric repeats                                                                 |   |
