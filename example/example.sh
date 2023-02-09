@@ -15,14 +15,14 @@ processDir=$HOME/tmp/ngs_tl_example/
 mkdir -p "$processDir"
 cd "$processDir"
 
-wget https://github.com/PankratzLab/NGS-TL/blob/main/resources/25kb.bins.bed
 regionsSearch="$processDir"/25kb.bins.bed
+[ -f "$regionsSearch" ] || wget https://github.com/PankratzLab/NGS-TL/blob/main/resources/25kb.bins.bed
 
-wget https://github.com/PankratzLab/NGS-TL/blob/main/resources/GRCh38_full_analysis_set_plus_decoy_hla.1kb.LTL.GC.filtered.bed.gz
 gcBedFile="$processDir"/GRCh38_full_analysis_set_plus_decoy_hla.1kb.LTL.GC.filtered.bed.gz
+[ -f "$gcBedFile" ] || wget https://github.com/PankratzLab/NGS-TL/blob/main/resources/GRCh38_full_analysis_set_plus_decoy_hla.1kb.LTL.GC.filtered.bed.gz
 
-wget "ftp://ftp.1000genomes.ebi.ac.uk/vol1/ftp/technical/reference/GRCh38_reference_genome/GRCh38_full_analysis_set_plus_decoy_hla.fa"
 referenceGenome="$processDir"/GRCh38_full_analysis_set_plus_decoy_hla.fa
+[ -f "$referenceGenome" ] || wget "ftp://ftp.1000genomes.ebi.ac.uk/vol1/ftp/technical/reference/GRCh38_reference_genome/GRCh38_full_analysis_set_plus_decoy_hla.fa"
 
 
 # use 1000G sample to test
