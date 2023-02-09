@@ -16,10 +16,10 @@ mkdir -p "$processDir"
 cd "$processDir"
 
 regionsSearch="$processDir"/25kb.bins.bed
-[ -f "$regionsSearch" ] || wget https://github.com/PankratzLab/NGS-TL/blob/main/resources/25kb.bins.bed
+[ -f "$regionsSearch" ] || wget https://raw.githubusercontent.com/PankratzLab/NGS-TL/main/resources/25kb.bins.bed
 
 gcBedFile="$processDir"/GRCh38_full_analysis_set_plus_decoy_hla.1kb.LTL.GC.filtered.bed.gz
-[ -f "$gcBedFile" ] || wget https://github.com/PankratzLab/NGS-TL/blob/main/resources/GRCh38_full_analysis_set_plus_decoy_hla.1kb.LTL.GC.filtered.bed.gz
+[ -f "$gcBedFile" ] || wget https://raw.githubusercontent.com/PankratzLab/NGS-TL/main/resources/GRCh38_full_analysis_set_plus_decoy_hla.1kb.LTL.GC.filtered.bed.gz
 
 referenceGenome="$processDir"/GRCh38_full_analysis_set_plus_decoy_hla.fa
 [ -f "$referenceGenome" ] || wget "ftp://ftp.1000genomes.ebi.ac.uk/vol1/ftp/technical/reference/GRCh38_reference_genome/GRCh38_full_analysis_set_plus_decoy_hla.fa"
