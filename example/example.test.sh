@@ -41,6 +41,6 @@ rootOutput="$processDir"/NA12878
 --gcBedFile "$gcBedFile" \
 --regionsSearch "$regionsSearch"
 
-
+ # singularity run --bind "$processDir" "docker://quay.io/jlanej/ngs-tl" /app/NGS-TL/example/example.test.sh
 
 diff "$rootOutput".ltl.estimate.txt.gz $(dirname $0)/NA12878.ltl.estimate.txt.gz
