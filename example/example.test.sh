@@ -44,10 +44,10 @@ rootOutput="$processDir"/NA12878
  # singularity run --bind "$processDir" "docker://quay.io/jlanej/ngs-tl" /app/NGS-TL/example/example.test.sh
 
 
-diff "$rootOutput".ltl.estimate.txt.gz $(dirname $0)/NA12878.ltl.estimate.txt.gz
 
 #has diff due to dates etc
-diff "$rootOutput".ltl.cram $(dirname $0)/NA12878.ltl.cram
+# diff "$rootOutput".ltl.cram $(dirname $0)/NA12878.ltl.cram
 
+diff "$rootOutput".ltl.estimate.txt.gz $(dirname $0)/NA12878.ltl.estimate.txt.gz
 status=$?
 exit $status
