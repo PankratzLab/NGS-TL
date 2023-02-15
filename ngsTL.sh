@@ -123,6 +123,9 @@ echo "estimating tl task"
 $repoDirectory/scripts/estimateTL.sh $tlCountFile $gcStatsFile $samtoolsStatsFile $outTLEstimate
 
 
+if compgen -G "${rootOutput}*.txt" > /dev/null; then
+    gzip "$rootOutput"*.txt
+fi
 
 # gzip any txt files to save space (e.g those from mosdepth)
-gzip "$rootOutput"*.txt
+
