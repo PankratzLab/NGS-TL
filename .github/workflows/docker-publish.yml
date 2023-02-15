@@ -80,7 +80,14 @@ jobs:
           labels: ${{ steps.meta.outputs.labels }}
           cache-from: type=gha
           cache-to: type=gha,mode=max
-
+      
+      # Use the example test script to see if there are any diffs in the final output file    
+      - name: Test docker image
+        id: testImage
+        uses: addnab/docker-run-action@v3
+        with:
+          image: ${{ steps.meta.outputs.tags }}
+          run: /app/NGS-TL/example/example.test.sh
 
       # Sign the resulting Docker image digest except on PRs.
       # This will only write to the public Rekor transparency log when the Docker
