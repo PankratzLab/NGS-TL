@@ -33,7 +33,7 @@ craiFile="ftp://ftp.1000genomes.ebi.ac.uk/vol1/ftp/data_collections/1000_genomes
 rootOutput="$processDir"/NA12878
 
 
-../ngsTL.sh \
+/app/NGS-TL/ngsTL.sh \
 --cramFile "$cramFile" \
 --craiFile "$craiFile" \
 --rootOutput "$rootOutput" \
