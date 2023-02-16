@@ -11,7 +11,7 @@ trap 'last_command=$current_command; current_command=$BASH_COMMAND' DEBUG
 trap 'echo "\"${last_command}\" command filed with exit code $?."' EXIT
 
 # set up directory with resources
-processDir=$(dirname $0)
+processDir=$1
 
 echo $processDir
 
