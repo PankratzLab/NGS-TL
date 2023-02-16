@@ -17,4 +17,4 @@ jobs:
     - name: Build the Docker image
       run: docker build . --file Dockerfile --tag ngs-tl-testing:test
     - name: run docker image      
-      run: docker run -v ./ ngs-tl-testing:test /app/NGS-TL/example/example.test.sh ./
+      run: docker run -v "$(pwd)":/testDir ngs-tl-testing:test /app/NGS-TL/example/example.test.sh
