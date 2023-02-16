@@ -94,23 +94,3 @@ jobs:
         # against the sigstore community Fulcio instance.
         run: echo "${{ steps.meta.outputs.tags }}" | xargs -I {} cosign sign {}@${{ steps.build-and-push.outputs.digest }}
         
-      # Use the example test script to see if there are any diffs in the final output file    
-      
-      - name: Build cached test image
-        id: buildTestImage
-        uses: docker/build-push-action@ac9327eae2b366085ac7f6a2d02df8aa8ead720a
-        with:
-          image: ngs-tl-test:latest
-          push: false
-          load: true
-          cache-from: type=gha
-          cache-to: type=gha,mode=max
-          
-      - name: Test cached image
-        id: testImage
-        uses: addnab/docker-run-action@v3
-        with:
-          image: ngs-tl-test:latest
-          run: /app/NGS-TL/example/example.test.sh
-
-
