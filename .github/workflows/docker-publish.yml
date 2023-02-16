@@ -81,14 +81,6 @@ jobs:
           cache-from: type=gha
           cache-to: type=gha,mode=max
       
-      # Use the example test script to see if there are any diffs in the final output file    
-      - name: Test docker image
-        id: testImage
-        uses: addnab/docker-run-action@v3
-        with:
-          image: ${{ steps.meta.outputs.tags }}
-          run: /app/NGS-TL/example/example.test.sh
-
       # Sign the resulting Docker image digest except on PRs.
       # This will only write to the public Rekor transparency log when the Docker
       # repository is public to avoid leaking data.  If you would like to publish
@@ -101,3 +93,21 @@ jobs:
         # This step uses the identity token to provision an ephemeral certificate
         # against the sigstore community Fulcio instance.
         run: echo "${{ steps.meta.outputs.tags }}" | xargs -I {} cosign sign {}@${{ steps.build-and-push.outputs.digest }}
+        
+      # Use the example test script to see if there are any diffs in the final output file    
+      
+      - name: Test docker image
+        id: buildTestImage
+        uses: docker/build-push-action@ac9327eae2b366085ac7f6a2d02df8aa8ead720a
+        with:
+          image: ngs-tl-test:latest
+          push: false
+          
+      - name: Test docker image
+        id: testImage
+        uses: addnab/docker-run-action@v3
+        with:
+          image: ngs-tl-test:latest
+          run: /app/NGS-TL/example/example.test.sh
+
+
