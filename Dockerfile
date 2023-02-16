@@ -92,8 +92,8 @@ RUN git clone https://github.com/PankratzLab/NGS-TL.git
 WORKDIR /app/NGS-TL
 
 
-RUN groupadd -r -g 1000 ubuntu && useradd -r -g ubuntu -u 1000 ubuntu
-USER ubuntu
+# RUN groupadd -r -g 1000 ubuntu && useradd -r -g ubuntu -u 1000 ubuntu
+# USER ubuntu
 
 
 CMD ["/bin/bash"]
