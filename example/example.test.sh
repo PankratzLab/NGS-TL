@@ -11,9 +11,7 @@ trap 'last_command=$current_command; current_command=$BASH_COMMAND' DEBUG
 trap 'echo "\"${last_command}\" command filed with exit code $?."' EXIT
 
 # set up directory with resources
-processDir=$HOME/tmp/ngs_tl_example/
-mkdir -p "$processDir"
-cd "$processDir"
+processDir=./
 
 regionsSearch="$processDir"/25kb.bins.bed
 [ -f "$regionsSearch" ] || wget https://raw.githubusercontent.com/PankratzLab/NGS-TL/main/resources/25kb.bins.bed
@@ -41,12 +39,6 @@ rootOutput="$processDir"/NA12878
 --gcBedFile "$gcBedFile" \
 --regionsSearch "$regionsSearch"
 
- # singularity run --bind "$processDir" "docker://quay.io/jlanej/ngs-tl" /app/NGS-TL/example/example.test.sh
-
-
-
-#has diff due to dates etc
-# diff "$rootOutput".ltl.cram $(dirname $0)/NA12878.ltl.cram
 
 diff "$rootOutput".ltl.estimate.txt.gz $(dirname $0)/NA12878.ltl.estimate.txt.gz
 status=$?
