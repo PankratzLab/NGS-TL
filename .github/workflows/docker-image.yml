@@ -15,6 +15,6 @@ jobs:
     steps:
     - uses: actions/checkout@v3
     - name: Build the Docker image
-      run: docker build . --file Dockerfile --tag ngs-tl-testing:$(date +%s)
+      run: docker build . --file Dockerfile --tag ngs-tl-testing:test
     - name: run docker image      
-      run: docker run ngs-tl-testing:$(date +%s)
+      run: docker run ngs-tl-testing:test
