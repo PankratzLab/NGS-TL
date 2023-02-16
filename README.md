@@ -9,14 +9,14 @@ TODO
 
 ## Example usage (via singularity)
 
-Primary entry point is to run [ngsTL.sh](https://github.com/PankratzLab/NGS-TL/blob/main/ngsTL.sh) that is inside the docker image (https://quay.io/repository/jlanej/ngs-tl?tab=info) 
+Primary entry point is to run [ngsTL.sh](https://github.com/PankratzLab/NGS-TL/blob/main/ngsTL.sh) that is inside the docker image (https://github.com/PankratzLab/NGS-TL/pkgs/container/ngs-tl) 
 
 
 ```
 
 singularity run \
 ...
-"docker://quay.io/jlanej/ngs-tl" \
+"docker://ghcr.io/pankratzlab/ngs-tl:main" \
 /app/NGS-TL/ngsTL.sh \
 # The cram (or bam) file to process
 --cramFile "$cramFile" \
