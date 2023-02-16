@@ -96,14 +96,17 @@ jobs:
         
       # Use the example test script to see if there are any diffs in the final output file    
       
-      - name: Test docker image
+      - name: Build cached test image
         id: buildTestImage
         uses: docker/build-push-action@ac9327eae2b366085ac7f6a2d02df8aa8ead720a
         with:
           image: ngs-tl-test:latest
           push: false
+          load: true
+          cache-from: type=gha
+          cache-to: type=gha,mode=max
           
-      - name: Test docker image
+      - name: Test cached image
         id: testImage
         uses: addnab/docker-run-action@v3
         with:
