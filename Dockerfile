@@ -89,7 +89,7 @@ WORKDIR /app
 # Github rate limits quite often
 # ADD https://api.github.com/repos/PankratzLab/NGS-TL/git/refs/heads/main version.json
 # use time instead
-ADD http://worldtimeapi.org/api/ip time.tmp
+ADD https://worldtimeapi.org/api/ip time.tmp
 
 RUN git clone https://github.com/PankratzLab/NGS-TL.git
 WORKDIR /app/NGS-TL
