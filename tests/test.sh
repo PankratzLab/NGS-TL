@@ -43,6 +43,6 @@ rootOutput="$processDir"/NA12878
 --regionsSearch "$regionsSearch"
 
 
-diff "$rootOutput".ltl.estimate.txt.gz $(dirname $0)/reference.output.NA12878.ltl.estimate.fail.txt.gz
+diff "$rootOutput".ltl.estimate.txt.gz $(dirname $0)/reference.output.NA12878.ltl.estimate.txt.gz
 status=$?
 exit $status
