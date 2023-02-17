@@ -12,6 +12,7 @@ trap 'echo "\"${last_command}\" command filed with exit code $?."' EXIT
 
 # set up directory with resources
 processDir=$(dirname $0)
+processDir=$1
 
 echo $processDir
 
