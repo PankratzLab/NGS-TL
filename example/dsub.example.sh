@@ -41,7 +41,7 @@ rootOutput="$processDir"/NA12878
 /home/tsaim/lane0212/.local/bin/dsub --image "ghcr.io/pankratzlab/ngs-tl:main" \
 --provider local \
 --logging "$processDir/dsub-test/logging/" \
---project ngs-tl-test
+--project ngs-tl-test \
 --command '/app/NGS-TL/ngsTL.sh \
 --cramFile "$cramFile" \
 --craiFile "$craiFile" \
