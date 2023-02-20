@@ -3,8 +3,8 @@ Estimate telomere length (TL) from whole genome sequencing
 
 
 ## Brief methods
-- The overall strategy is similar to [TelSeq](https://github.com/zd1/telseq), with a few shortcuts for speed
-  - TelSeq reference https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4027178/
+
+The overall strategy is similar to [TelSeq](https://github.com/zd1/telseq), with a few shortcuts for speed (TelSeq reference https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4027178/) 
 TODO 
 
 ## Example usage (via singularity)
