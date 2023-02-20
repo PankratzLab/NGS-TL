@@ -34,11 +34,14 @@ rootOutput="$processDir"/NA12878
 
 
 #Install dsub (https://github.com/DataBiosphere/dsub)
+
 /home/tsaim/lane0212/.local/bin/dstat --provider local --jobs 'ngstl--lane0212--230220-172206-07' --users 'lane0212' --status '*'
  mkdir -p $processDir/dsub-test/logging/
- /home/tsaim/lane0212/.local/bin/dsub --image "ghcr.io/pankratzlab/ngs-tl:main" \
+
+/home/tsaim/lane0212/.local/bin/dsub --image "ghcr.io/pankratzlab/ngs-tl:main" \
 --provider local \
 --logging "$processDir/dsub-test/logging/" \
+--project ngs-tl-test
 --command '/app/NGS-TL/ngsTL.sh \
 --cramFile "$cramFile" \
 --craiFile "$craiFile" \
@@ -47,5 +50,3 @@ rootOutput="$processDir"/NA12878
 --gcBedFile "$gcBedFile" \
 --regionsSearch "$regionsSearch"'
 
-
-/home/tsaim/lane0212/.local/bin/dsub
