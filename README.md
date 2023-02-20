@@ -7,10 +7,12 @@ Estimate telomere length (TL) from whole genome sequencing
 The overall strategy is similar to [TelSeq](https://github.com/zd1/telseq), with a few shortcuts for speed (TelSeq reference https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4027178/) 
 TODO 
 
-## Example usage (via singularity)
+# Example usage
 
 Primary entry point is to run [ngsTL.sh](https://github.com/PankratzLab/NGS-TL/blob/main/ngsTL.sh) that is inside the docker image (https://github.com/PankratzLab/NGS-TL/pkgs/container/ngs-tl) 
 
+
+## Using singularity
 
 ```
 
@@ -39,6 +41,24 @@ singularity run \
 # If mosdepth file is not provided, mosdepth will be run to produce $rootOutput.regions.bed.gz
 #--mosdepthFile $pathToMosdepthFil
 ```
+
+## Using dsub
+
+The command-line tool dsub can be run using arguments and invocation as the above singularity example:
+
+```
+dsub --image "ghcr.io/pankratzlab/ngs-tl:main" \
+--script /app/NGS-TL/ngsTL.sh \
+--cramFile "$cramFile" \
+--craiFile "$craiFile" \
+--rootOutput "$rootOutput" \
+--referenceGenome "$referenceGenome" \
+--gcBedFile "$gcBedFile" \
+--regionsSearch "$regionsSearch"
+
+```
+
+## Example script
 
 A parameterized example with all expected output can be found in the [example directory](https://github.com/PankratzLab/NGS-TL/tree/main/example) of this repo. Output was generated using [example.sh](https://github.com/PankratzLab/NGS-TL/tree/main/example/example.sh)
 
