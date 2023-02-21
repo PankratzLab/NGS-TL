@@ -44,10 +44,10 @@ singularity run \
 
 ## Using dsub
 
-The command-line tool dsub can be run using arguments and invocation as the above singularity example (untested, and not succesfully run):
+The command-line tool dsub can be run using arguments and invocation as the above singularity example (the below is untested, and not succesfully run):
 
 ```
-dsub ... --image "ghcr.io/pankratzlab/ngs-tl:main" 
+dsub ... --image "ghcr.io/pankratzlab/ngs-tl:main" ...
 
 ```
 
