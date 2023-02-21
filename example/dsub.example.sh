@@ -36,7 +36,9 @@ rootOutput="$processDir"/NA12878
 #Install dsub (https://github.com/DataBiosphere/dsub)
  
  mkdir -p $processDir/dsub-test/logging/
-/home/tsaim/lane0212/.local/bin/dsub --image "ghcr.io/pankratzlab/ngs-tl:main" \
+  # --image "ghcr.io/pankratzlab/ngs-tl:main" 
+  
+/home/tsaim/lane0212/.local/bin/dsub \
 --provider local \
 --logging "$processDir/dsub-test/logging/" \
 --project ngs-tl-test \
