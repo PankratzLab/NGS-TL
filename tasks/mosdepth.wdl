@@ -30,7 +30,7 @@ task runmosdepth {
 	}
 
 	runtime {
-		docker: "quay.io/jlanej/mosdepth-docker:sha256:3ab57446d67f81cba88e051afe0f33d63684fdf6f1f54decf6591890f16bc176"
+		docker: "ghcr.io/pankratzlab/ngs-tl:main"
 		memory: mem_gb + "GB"
 		disks: "local-disk " + disk_size + " HDD"
 	}
