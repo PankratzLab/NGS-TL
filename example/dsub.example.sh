@@ -1,5 +1,7 @@
 #!/bin/bash
 
+# Wasn't able to run using dsub, but below is a potential way to do it with some tweaking
+
 # Estimate LTL using a 1000 genomes cram and dsub
 
 # causes a script to immediately exit when it encounters an error.
@@ -34,11 +36,14 @@ rootOutput="$processDir"/NA12878
 
 
 #Install dsub (https://github.com/DataBiosphere/dsub)
- 
- mkdir -p $processDir/dsub-test/logging/
-  # --image "ghcr.io/pankratzlab/ngs-tl:main" 
-  
-/home/tsaim/lane0212/.local/bin/dsub \
+
+mkdir -p $processDir/dsub-test/logging/
+
+# python3 -m venv dsub_libs
+# source dsub_libs/bin/activate
+
+dsub \
+--image "ghcr.io/pankratzlab/ngs-tl:main" \
 --provider local \
 --logging "$processDir/dsub-test/logging/" \
 --project ngs-tl-test \
@@ -50,3 +55,4 @@ rootOutput="$processDir"/NA12878
 --gcBedFile "$gcBedFile" \
 --regionsSearch "$regionsSearch"'
 
+# deactivate

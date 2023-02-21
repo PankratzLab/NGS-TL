@@ -44,17 +44,10 @@ singularity run \
 
 ## Using dsub
 
-The command-line tool dsub can be run using arguments and invocation as the above singularity example:
+The command-line tool dsub can be run using arguments and invocation as the above singularity example (untested, and not succesfully run):
 
 ```
-dsub --image "ghcr.io/pankratzlab/ngs-tl:main" \
---script /app/NGS-TL/ngsTL.sh \
---cramFile "$cramFile" \
---craiFile "$craiFile" \
---rootOutput "$rootOutput" \
---referenceGenome "$referenceGenome" \
---gcBedFile "$gcBedFile" \
---regionsSearch "$regionsSearch"
+dsub ... --image "ghcr.io/pankratzlab/ngs-tl:main" 
 
 ```
 
