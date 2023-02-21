@@ -37,7 +37,7 @@ rootOutput="$processDir"/NA12878
 
 singularity run \
 --bind "$processDir" \
-"docker://quay.io/jlanej/ngs-tl" \
+"docker://ghcr.io/pankratzlab/ngs-tl:main" \
 /app/NGS-TL/ngsTL.sh \
 --cramFile "$cramFile" \
 --craiFile "$craiFile" \
