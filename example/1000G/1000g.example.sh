@@ -2,6 +2,8 @@
 
 # Estimate LTL using a 1000 genomes cram
 
+
+
 # causes a script to immediately exit when it encounters an error.
 set -e
 
@@ -11,7 +13,7 @@ trap 'last_command=$current_command; current_command=$BASH_COMMAND' DEBUG
 trap 'echo "\"${last_command}\" command filed with exit code $?."' EXIT
 
 # set up directory with resources
-processDir=$HOME/tmp/ngs_tl_example/
+processDir=$HOME/tmp/ngs_tl_example_1000G/
 mkdir -p "$processDir"
 cd "$processDir"
 
@@ -28,6 +30,9 @@ referenceGenome="$processDir"/GRCh38_full_analysis_set_plus_decoy_hla.fa
 # use 1000G sample to test
 cramFile="ftp://ftp.1000genomes.ebi.ac.uk/vol1/ftp/data_collections/1000_genomes_project/data/CEU/NA12878/alignment/NA12878.alt_bwamem_GRCh38DH.20150718.CEU.low_coverage.cram"
 craiFile="ftp://ftp.1000genomes.ebi.ac.uk/vol1/ftp/data_collections/1000_genomes_project/data/CEU/NA12878/alignment/NA12878.alt_bwamem_GRCh38DH.20150718.CEU.low_coverage.cram.crai"
+
+
+wget "http://ftp.1000genomes.ebi.ac.uk/vol1/ftp/data_collections/1000G_2504_high_coverage/1000G_2504_high_coverage.sequence.index"
 
 
 rootOutput="$processDir"/NA12878
