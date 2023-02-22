@@ -51,16 +51,14 @@ seqIndex="$processDir"/1000G_2504_high_coverage.sequence.index
 
 grep -v "#" $seqIndex |cut -f1 \
 |head -n100 \
-| parallel -j1 "echo {.}.cram; echo $processDir/{/.}"
-
-#  \
-#  singularity run \
-# --bind "$processDir" \
-# "docker://ghcr.io/pankratzlab/ngs-tl:main" \
-# /app/NGS-TL/ngsTL.sh \
-# --cramFile "{}" \
-# --craiFile "{}.crai" \
-# --rootOutput "$processDir"/{/.} \
-# --referenceGenome "$referenceGenome" \
-# --gcBedFile "$gcBedFile" \
-# --regionsSearch "$regionsSearch"'
+| parallel -j1 "echo {.}.cram; \
+ singularity run \
+--bind $processDir \
+docker://ghcr.io/pankratzlab/ngs-tl:main \
+/app/NGS-TL/ngsTL.sh \
+--cramFile {} \
+--craiFile {}.crai \
+--rootOutput $processDir/{/.} \
+--referenceGenome $referenceGenome \
+--gcBedFile $gcBedFile \
+--regionsSearch $regionsSearch"
