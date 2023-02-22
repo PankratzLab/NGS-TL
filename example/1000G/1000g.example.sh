@@ -51,7 +51,7 @@ seqIndex="$processDir"/1000G_2504_high_coverage.sequence.index
 
 grep -v "#" $seqIndex |cut -f1 \
 |head -n100 \
-| parallel -j24 'echo {.}.cram; \
+| parallel -j1 'echo {.}.cram; \
  singularity run \
 --bind "$processDir" \
 "docker://ghcr.io/pankratzlab/ngs-tl:main" \
