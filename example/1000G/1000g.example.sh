@@ -32,8 +32,16 @@ cramFile="ftp://ftp.1000genomes.ebi.ac.uk/vol1/ftp/data_collections/1000_genomes
 craiFile="ftp://ftp.1000genomes.ebi.ac.uk/vol1/ftp/data_collections/1000_genomes_project/data/CEU/NA12878/alignment/NA12878.alt_bwamem_GRCh38DH.20150718.CEU.low_coverage.cram.crai"
 
 
-wget "http://ftp.1000genomes.ebi.ac.uk/vol1/ftp/data_collections/1000G_2504_high_coverage/1000G_2504_high_coverage.sequence.index"
+seqIndex="$processDir"/1000G_2504_high_coverage.sequence.index
 
+[ -f "$seqIndex" ] ||wget "http://ftp.1000genomes.ebi.ac.uk/vol1/ftp/data_collections/1000G_2504_high_coverage/1000G_2504_high_coverage.sequence.index"
+
+
+grep -v "#" $seqIndex |cut -f1 \
+|head -n100 \
+| parallel 'echo {.}.cram'
+
+exit 0
 
 rootOutput="$processDir"/NA12878
 
