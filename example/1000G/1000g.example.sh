@@ -1,6 +1,18 @@
 #!/bin/bash
+#$ -cwd
+#$ -S /bin/bash
+#SBATCH --nodes=1
+#SBATCH --ntasks-per-node=24
+#SBATCH --mem=20gb
+#SBATCH -t 74:00:00
+#SBATCH --mail-type=ALL
+#SBATCH -p pankratz
+#SBATCH -o %j.out
+#SBATCH -e %j.err
 
-# Estimate LTL using a 1000 genomes cram
+module load parallel
+
+# Estimate LTL on all 1000G high coverage crams, via slrm and singularity
 
 
 
@@ -39,25 +51,14 @@ seqIndex="$processDir"/1000G_2504_high_coverage.sequence.index
 
 grep -v "#" $seqIndex |cut -f1 \
 |head -n100 \
-| parallel 'echo {.}.cram'
-
-exit 0
-
-rootOutput="$processDir"/NA12878
-
-
-# INSTALL singularity 
-
-singularity run \
+| parallel -j24 'echo {.}.cram; \
+ singularity run \
 --bind "$processDir" \
 "docker://ghcr.io/pankratzlab/ngs-tl:main" \
 /app/NGS-TL/ngsTL.sh \
---cramFile "$cramFile" \
---craiFile "$craiFile" \
---rootOutput "$rootOutput" \
+--cramFile "{}" \
+--craiFile "{}.crai" \
+--rootOutput "$processDir"/{/.} \
 --referenceGenome "$referenceGenome" \
 --gcBedFile "$gcBedFile" \
---regionsSearch "$regionsSearch"
-
-
-
+--regionsSearch "$regionsSearch"'
