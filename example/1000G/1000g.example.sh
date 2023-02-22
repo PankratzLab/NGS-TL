@@ -39,11 +39,6 @@ referenceGenome="$processDir"/GRCh38_full_analysis_set_plus_decoy_hla.fa
 [ -f "$referenceGenome" ] || wget "ftp://ftp.1000genomes.ebi.ac.uk/vol1/ftp/technical/reference/GRCh38_reference_genome/GRCh38_full_analysis_set_plus_decoy_hla.fa"
 
 
-# use 1000G sample to test
-cramFile="ftp://ftp.1000genomes.ebi.ac.uk/vol1/ftp/data_collections/1000_genomes_project/data/CEU/NA12878/alignment/NA12878.alt_bwamem_GRCh38DH.20150718.CEU.low_coverage.cram"
-craiFile="ftp://ftp.1000genomes.ebi.ac.uk/vol1/ftp/data_collections/1000_genomes_project/data/CEU/NA12878/alignment/NA12878.alt_bwamem_GRCh38DH.20150718.CEU.low_coverage.cram.crai"
-
-
 seqIndex="$processDir"/1000G_2504_high_coverage.sequence.index
 
 [ -f "$seqIndex" ] ||wget "http://ftp.1000genomes.ebi.ac.uk/vol1/ftp/data_collections/1000G_2504_high_coverage/1000G_2504_high_coverage.sequence.index"
@@ -53,6 +48,16 @@ grep -v "#" $seqIndex |cut -f1 \
 |head -n100 \
 | parallel -j1 "echo {.}.cram; echo $processDir/{/.}"
 
+singularity run \
+--bind $processDir \
+docker://ghcr.io/pankratzlab/ngs-tl:main \
+/app/NGS-TL/ngsTL.sh \
+--cramFile ftp://ftp.sra.ebi.ac.uk/vol1/run/ERR323/ERR3239490/NA12890.final.cram \
+--craiFile ftp://ftp.sra.ebi.ac.uk/vol1/run/ERR323/ERR3239490/NA12890.final.cram.crai \
+--rootOutput $processDir/NA12890.final \
+--referenceGenome $referenceGenome \
+--gcBedFile $gcBedFile \
+--regionsSearch $regionsSearch
 
 grep -v "#" $seqIndex |cut -f1 \
 |head -n100 \
