@@ -49,7 +49,7 @@ grep -v "#" $seqIndex |cut -f1 \
 | parallel -j1 "echo {.}.cram; echo $processDir/{/.}"
 
 
-apptainer run \
+apptainer --debug  run \
 --bind $processDir \
 docker://ghcr.io/pankratzlab/ngs-tl:main \
 /app/NGS-TL/ngsTL.sh \
