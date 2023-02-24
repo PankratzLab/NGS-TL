@@ -48,6 +48,7 @@ grep -v "#" $seqIndex |cut -f1 \
 |head -n100 \
 | parallel -j1 "echo {.}.cram; echo $processDir/{/.}"
 
+
 apptainer run \
 --bind $processDir \
 docker://ghcr.io/pankratzlab/ngs-tl:main \
@@ -62,7 +63,7 @@ docker://ghcr.io/pankratzlab/ngs-tl:main \
 grep -v "#" $seqIndex |cut -f1 \
 |head -n100 \
 | parallel -j1 "echo {.}.cram; \
- singularity run \
+ apptainer run \
 --bind $processDir \
 docker://ghcr.io/pankratzlab/ngs-tl:main \
 /app/NGS-TL/ngsTL.sh \
