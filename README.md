@@ -3,7 +3,7 @@ Estimate telomere length (TL) from whole genome sequencing (WGS)
  
 # Example usage
 
-Primary entry point is to run [ngsTL.sh](https://github.com/PankratzLab/NGS-TL/blob/main/ngsTL.sh) that is inside the docker image (https://github.com/PankratzLab/NGS-TL/pkgs/container/ngs-tl) 
+The primary entry point is to run [ngsTL.sh](https://github.com/PankratzLab/NGS-TL/blob/main/ngsTL.sh) contained in the docker image (https://github.com/PankratzLab/NGS-TL/pkgs/container/ngs-tl) 
 
 
 ## Using singularity
@@ -100,3 +100,4 @@ Here is a brief overview of the methods and steps currently utilized in this rep
 2. [extractMosdepthGC.sh](https://github.com/PankratzLab/NGS-TL/blob/main/scripts/extractMosdepthGC.sh): Extract regions of similar gc content from the mosdepth 1kb bins (48% <-> 52%) that do not overlap a set of lower quality bins (see https://github.com/PankratzLab/NGS-PCA#exclude-bed for more details). Then compute mean coverage of those regions.
 3. [extractEnds.sh](https://github.com/PankratzLab/NGS-TL/blob/main/scripts/extractEnds.sh): Extract reads from the cram that have been mapped to within 25kb of chromosomal ends (regions defined by [25kb.bins.bed](https://github.com/PankratzLab/NGS-TL/blob/main/resources/25kb.bins.bed))
 4. [countTLReads.sh](https://github.com/PankratzLab/NGS-TL/blob/main/scripts/countTLReads.sh): Count the number of TTAGGG/CCCTAA telomeric repeats seen in each read extracted from the previous step. Instead of scanning the entire cram/bam as in TelSeq, we only look for telomeric reads near chromsome ends
+5. [estimateTL.sh](https://github.com/PankratzLab/NGS-TL/blob/main/scripts/estimateTL.sh):  Estimate TL using mean coverage of GC bins from step 2 and the number of TL reads from step 4. A TL estimate is computed for each LENGTH_ESTIMATE_AT_K. 
