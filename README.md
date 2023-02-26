@@ -93,7 +93,7 @@ TODO ... but the individual length estimates can be evaluated against a PRS and 
 
 The general strategy is similar to [TelSeq](https://github.com/zd1/telseq), with a few shortcuts for speed (TelSeq reference https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4027178/)
 
-Here is a brief overview of the methods and steps currently utilized in this repository to estimate TL from WGS. [ngsTL.sh](https://github.com/PankratzLab/NGS-TL/blob/main/ngsTL.sh) runs the following pipeline.
+Here is a brief overview of the methods currently utilized in this repository to estimate TL from WGS. [ngsTL.sh](https://github.com/PankratzLab/NGS-TL/blob/main/ngsTL.sh) runs the following steps.
 
 1. [mosdepth.sh](https://github.com/PankratzLab/NGS-TL/blob/main/scripts/mosdepth.sh)
 : If a mosdepth file is not provided up front, generate coverage of each 1kb bin across the entire genome via mosdepth
