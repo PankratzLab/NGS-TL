@@ -99,4 +99,4 @@ Here is a brief overview of the methods and steps currently utilized in this rep
 : If a mosdepth file is not provided up front, generate coverage of each 1kb bin across the entire genome via mosdepth
 2. [extractMosdepthGC.sh](https://github.com/PankratzLab/NGS-TL/blob/main/scripts/extractMosdepthGC.sh): Extract regions of similar gc content from the mosdepth 1kb bins (48% <-> 52%) that do not overlap a set of lower quality bins (see https://github.com/PankratzLab/NGS-PCA#exclude-bed for more details). Then compute mean coverage of those regions.
 3. [extractEnds.sh](https://github.com/PankratzLab/NGS-TL/blob/main/scripts/extractEnds.sh): Extract reads from the cram that have been mapped to within 25kb of chromosomal ends (regions defined by [25kb.bins.bed](https://github.com/PankratzLab/NGS-TL/blob/main/resources/25kb.bins.bed))
-4.
+4. [countTLReads.sh](https://github.com/PankratzLab/NGS-TL/blob/main/scripts/countTLReads.sh): Count the number of TTAGGG/CCCTAA telomeric repeats seen in each read extracted from the previous step. Instead of scanning the entire cram/bam as in TelSeq, we only look for telomeric reads near chromsome ends
