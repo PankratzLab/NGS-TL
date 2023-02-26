@@ -4,8 +4,14 @@ Estimate telomere length (TL) from whole genome sequencing
 
 ## Brief methods
 
-The overall strategy is similar to [TelSeq](https://github.com/zd1/telseq), with a few shortcuts for speed (TelSeq reference https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4027178/) 
-TODO 
+The general strategy is similar to [TelSeq](https://github.com/zd1/telseq), with a few shortcuts for speed (TelSeq reference https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4027178/)
+
+Here is an overview of the implementation steps currently utilized in this repository
+
+1. [mosdepth.sh](https://github.com/PankratzLab/NGS-TL/blob/main/scripts/mosdepth.sh)
+: If not provided, generate coverage of 1kb bins across genome via mosdepth
+2. [extractMosdepthGC.sh](https://github.com/PankratzLab/NGS-TL/blob/main/scripts/extractMosdepthGC.sh): Extract regions of similar gc content from the mosdepth 1kb bins (48% <-> 52%) that do not overlap a set of lower quality bins (see https://github.com/PankratzLab/NGS-PCA#exclude-bed for more details). Then compute mean coverage of those regions.
+3. [extractEnds.sh](https://github.com/PankratzLab/NGS-TL/blob/main/scripts/extractEnds.sh): 
 
 # Example usage
 
