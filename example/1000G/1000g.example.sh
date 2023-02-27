@@ -48,6 +48,7 @@ grep -v "#" $seqIndex |cut -f1 \
 |head -n100 \
 | parallel -j1 "echo {.}.cram; echo $processDir/{/.}"
 
+apptainer pull docker://ghcr.io/pankratzlab/ngs-tl:main 
 
 apptainer --debug  run \
 --bind $processDir \
