@@ -1,5 +1,5 @@
 name: TL-estimate-test
-
+# builds a docker image and then executes a test script to ensure results have not changed
 on:
   push:
     branches: [ "main" ]
