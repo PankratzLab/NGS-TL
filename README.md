@@ -1,3 +1,11 @@
+<!-- badges: start -->
+[![Docker-publish](https://github.com/PankratzLab/NGS-TL/actions/workflows/docker-publish.yml/badge.svg)](https://github.com/PankratzLab/NGS-TL/actions/workflows/docker-publish.yml)
+[![TL-estimate-test](https://github.com/PankratzLab/NGS-TL/actions/workflows/docker-test.yml/badge.svg)](https://github.com/PankratzLab/NGS-TL/actions/workflows/docker-test.yml)
+
+
+
+<!-- badges: end -->
+
 # NGS-TL
 Estimate telomere length (TL) from whole genome sequencing (WGS)
  
