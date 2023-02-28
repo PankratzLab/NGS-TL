@@ -1,4 +1,4 @@
-name: Test-TL 
+name: TL-estimate-test
 
 on:
   push:
