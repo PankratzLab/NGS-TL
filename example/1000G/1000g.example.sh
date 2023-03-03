@@ -3,7 +3,7 @@
 #$ -S /bin/bash
 #SBATCH --nodes=1
 #SBATCH --ntasks-per-node=24
-#SBATCH --mem=20gb
+#SBATCH --mem=100gb
 #SBATCH -t 24:00:00
 #SBATCH --mail-type=ALL
 #SBATCH -p pankratz
@@ -48,9 +48,9 @@ grep -v "#" $seqIndex |cut -f1 \
 |head -n100 \
 | parallel -j1 "echo {.}.cram; echo $processDir/{/.}"
 
-apptainer pull docker://ghcr.io/pankratzlab/ngs-tl:main 
+# apptainer pull docker://ghcr.io/pankratzlab/ngs-tl:main 
 
-apptainer --debug  run \
+apptainer run \
 --bind $processDir \
 docker://ghcr.io/pankratzlab/ngs-tl:main \
 /app/NGS-TL/ngsTL.sh \
