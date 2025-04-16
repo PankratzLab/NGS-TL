@@ -84,12 +84,10 @@ WORKDIR /usr/src
 
 
 WORKDIR /app
-# https://stackoverflow.com/questions/36996046/how-to-prevent-dockerfile-caching-git-clone
+
 # prevent cached git clone if repo main is updated
-# Github rate limits quite often
-# ADD https://api.github.com/repos/PankratzLab/NGS-TL/git/refs/heads/main version.json
 # use time instead
-ADD https://worldtimeapi.org/api/ip time.tmp
+RUN echo "$(date)" > time.tmp
 
 RUN git clone https://github.com/PankratzLab/NGS-TL.git
 WORKDIR /app/NGS-TL
